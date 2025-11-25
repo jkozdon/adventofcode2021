@@ -2,8 +2,8 @@ import sys
 
 
 def parta(input):
-    start = {'(', '[', '{', '<'}
-    close = {')': ('(', 3), ']': ('[', 57), '}': ('{', 1197), '>': ('<', 25137)}
+    start = {"(", "[", "{", "<"}
+    close = {")": ("(", 3), "]": ("[", 57), "}": ("{", 1197), ">": ("<", 25137)}
 
     def score(line):
         parens = []
@@ -17,7 +17,7 @@ def parta(input):
                     return v
         return 0
 
-    with open(input, 'r') as file:
+    with open(input, "r") as file:
         x = 0
         for line in file:
             x += score(line)
@@ -25,9 +25,9 @@ def parta(input):
 
 
 def partb(input):
-    start = {'(', '[', '{', '<'}
-    close = {')': ('(', 3), ']': ('[', 57), '}': ('{', 1197), '>': ('<', 25137)}
-    vals = {'(': 1, '[': 2, '{': 3, '<': 4}
+    start = {"(", "[", "{", "<"}
+    close = {")": ("(", 3), "]": ("[", 57), "}": ("{", 1197), ">": ("<", 25137)}
+    vals = {"(": 1, "[": 2, "{": 3, "<": 4}
 
     def score(line):
         parens = []
@@ -44,7 +44,7 @@ def partb(input):
             x = 5 * x + vals[p]
         return x
 
-    with open(input, 'r') as file:
+    with open(input, "r") as file:
         x = sorted([s for line in file if (s := score(line)) > 0])
         print(f"part a: {x[len(x) // 2]}")
 

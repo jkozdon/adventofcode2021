@@ -73,7 +73,7 @@ if __name__ == "__main__":
         print(f"{sys.argv[0]} <filename>")
     else:
         file = sys.argv[1]
-        with open(file, 'r') as file:
+        with open(file, "r") as file:
             input = [[int(v) for v in w[:-1]] for w in file]
 
         parta([line[:] for line in input])

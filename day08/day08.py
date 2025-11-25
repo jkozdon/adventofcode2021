@@ -26,7 +26,7 @@ def partb(name, input):
         four = d[4][0]
         eight = d[7][0]
         ## 7 - 1 gives us A
-        pos_a = seven.replace(one[0],'').replace(one[1],'')
+        pos_a = seven.replace(one[0], "").replace(one[1], "")
 
         # look for 9 and eliminate known info
         #  A
@@ -38,7 +38,7 @@ def partb(name, input):
         for wrd in d[6]:
             num = wrd
             for c in chk:
-                num = num.replace(c,'')
+                num = num.replace(c, "")
             if len(num) == 1:
                 pos_g = num
                 nine = wrd
@@ -47,61 +47,71 @@ def partb(name, input):
         #  A
         #   c
         #  d
-        # E  
+        # E
         #  G
         chk = {a for a in one + seven + four + pos_g}
         for wrd in d[5]:
             num = wrd
             for c in chk:
-                num = num.replace(c,'')
+                num = num.replace(c, "")
             if len(num) == 1:
                 two = wrd
                 pos_e = num
-                pos_d = wrd.replace(pos_e, '').replace(pos_a,'').replace(pos_g,'').replace(one[0],'').replace(one[1],'')
-                pos_c = wrd.replace(pos_e, '').replace(pos_a,'').replace(pos_g,'').replace(pos_d,'')
-                pos_f = one.replace(pos_c,'')
+                pos_d = (
+                    wrd.replace(pos_e, "")
+                    .replace(pos_a, "")
+                    .replace(pos_g, "")
+                    .replace(one[0], "")
+                    .replace(one[1], "")
+                )
+                pos_c = (
+                    wrd.replace(pos_e, "")
+                    .replace(pos_a, "")
+                    .replace(pos_g, "")
+                    .replace(pos_d, "")
+                )
+                pos_f = one.replace(pos_c, "")
 
-        pos_b = four.replace(pos_c,'').replace(pos_d, '').replace(pos_f,'')
-        map = {''.join(sorted(one)): 1,
-               ''.join(sorted(two)): 2,
-               #  a
-               #   c
-               #  d
-               #   f
-               #  g
-               ''.join(sorted(pos_a + pos_c + pos_d + pos_f + pos_g)): 3,
-               ''.join(sorted(four)): 4,
-               #  a
-               # b  
-               #  d
-               #   f
-               #  g
-               ''.join(sorted(pos_a + pos_b + pos_d + pos_f + pos_g)): 5,
-               #  a
-               # b  
-               #  d
-               # e f
-               #  g
-               ''.join(sorted(pos_a + pos_b + pos_d + pos_e + pos_f + pos_g)): 6,
-               ''.join(sorted(seven)): 7,
-               ''.join(sorted(eight)): 8,
-               ''.join(sorted(nine)): 9,
-               #  a
-               # b c
-               #   
-               # e f
-               #  g
-               ''.join(sorted(pos_a + pos_b + pos_c + pos_e + pos_f + pos_g)): 0
-               }
+        pos_b = four.replace(pos_c, "").replace(pos_d, "").replace(pos_f, "")
+        map = {
+            "".join(sorted(one)): 1,
+            "".join(sorted(two)): 2,
+            #  a
+            #   c
+            #  d
+            #   f
+            #  g
+            "".join(sorted(pos_a + pos_c + pos_d + pos_f + pos_g)): 3,
+            "".join(sorted(four)): 4,
+            #  a
+            # b
+            #  d
+            #   f
+            #  g
+            "".join(sorted(pos_a + pos_b + pos_d + pos_f + pos_g)): 5,
+            #  a
+            # b
+            #  d
+            # e f
+            #  g
+            "".join(sorted(pos_a + pos_b + pos_d + pos_e + pos_f + pos_g)): 6,
+            "".join(sorted(seven)): 7,
+            "".join(sorted(eight)): 8,
+            "".join(sorted(nine)): 9,
+            #  a
+            # b c
+            #
+            # e f
+            #  g
+            "".join(sorted(pos_a + pos_b + pos_c + pos_e + pos_f + pos_g)): 0,
+        }
         v = 0
         for num in item.split("|")[1].split(" "):
             if len(num) == 0:
                 continue
-            v = v * 10 + map[''.join(sorted(num))]
+            v = v * 10 + map["".join(sorted(num))]
         total += v
     print(name, ":", total)
-
-
 
 
 if __name__ == "__main__":
