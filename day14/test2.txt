@@ -1,0 +1,5 @@
+NN
+
+NN -> C
+NC -> B
+CN -> C
